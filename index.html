@@ -85,6 +85,10 @@
             // No jerks. :P
             e.preventDefault();
 
+			// Searching again.
+            inpt.removeClass( 'is-danger' );
+
+
             // Loading...
             btn.addClass( 'is-loading' );
 
@@ -139,7 +143,6 @@
 
                             // Success.
                             inpt.addClass( 'is-success' );
-                            inpt.removeClass( 'is-danger' );
                             btn.removeClass( 'is-loading' );
                             btn.addClass( 'is-success' );
                             appNotice.append( '<div class="notification is-success">' + plugin + ' was added to the WordPress repository on <span class="tag is-warning">' + dateAdded + '</span> and the it\'s <span class="tag is-warning">' + age + '</span>  old.</div>' );
