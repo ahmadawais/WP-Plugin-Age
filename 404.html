@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>WordPress Plugin Age!</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma@0.3.2/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title"><img src="logo.png"></h1>
+                <h2 class="subtitle">Find the age of a WordPress Plugin at WordPress.org Repository!</h2>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container app">
+                <p class="control has-addons">
+                    <form action="#">
+                        <p class="control">
+                            <input class="input slug is-success column is-half" tabindex="1" type="text" placeholder="Enter plugin slug!">
+                        </p>
+                        <div class="control">
+                            <p class="control">
+                                <button class="button is-success" tabindex="2"><span class="icon"><i class="fa fa-search" aria-hidden="true"></i></span> <span>FIND</span></button>
+                            </p>
+                        </div>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container app">
+                <p class="control has-addons">
+                    <div class="notice"></div>
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Built by <a href="https://AhmadAwais.com">Ahmad Awais</a> and <a href="https;MaedahBatool.com">Maedah Batool</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+    (function($) {
+        console.clear();
+
+        // Button.
+        const btn = $('.button');
+
+        // App.
+        const appNotice = $('.app .notice');
+
+        // Input.
+        const inpt = $('.slug');
+
+        // Age Calculator.
+        function getAge(dateAdded) {
+            var
+                pluginAdded = new Date(dateAdded),
+                today = new Date(),
+                ageInMilliseconds = new Date(today - pluginAdded),
+                years = ageInMilliseconds / (24 * 60 * 60 * 1000 * 365.25),
+                months = 12 * (years % 1),
+                days = Math.floor(30 * (months % 1));
+            return Math.floor(years) + ' years ' + Math.floor(months) + ' months ' + days + ' days';
+        }
+
+        // On click.
+        $('form').on('submit', function(e) {
+            // No jerks. :P
+            e.preventDefault();
+
+            // Loading...
+            btn.addClass('is-loading');
+
+            // Loading
+            appNotice.html('<p>⌛️ Loading...</p>');
+
+            // Slug.
+            let slug = inpt.val();
+
+            if ('' !== slug) {
+                // API URL.
+                // const apiURL = 'https://api.wordpress.org/plugins/info/1.0/' + slug + '.json';
+
+                // Build a GET request.
+                $.ajax({
+                    type: "POST",
+                    url: "https://api.wordpress.org/plugins/info/1.1/",
+                    data: {
+                        action: "plugin_information",
+                        request: {
+                            slug: slug
+                        }
+                    },
+                    success: function(data) {
+                        // Log data.
+                        console.log('DATA: ', data);
+
+                        // Should not be null.
+                        if (null === data) {
+                            // Not found.
+                            appNotice.empty();
+                            inpt.addClass('is-success');
+                            btn.removeClass('is-loading');
+                            inpt.addClass('is-danger');
+                            appNotice.append('<div class="notification is-danger">There was no plugin found agains the slug: <span class="tag is-warning">' + slug + '</span></div>');
+
+                        } else {
+                            // App Notice should be empty.
+                            appNotice.empty();
+
+                            // Plugin.
+                            let plugin = data.name;
+
+                            // Date.
+                            let dateAdded = data.added;
+
+                            // Age.
+                            let age = getAge(dateAdded);
+
+                            // Downloads
+                            let downloads = data.downloaded.toLocaleString();
+                            console.log(downloads);
+
+                            // Success.
+                            inpt.addClass('is-success');
+                            btn.removeClass('is-loading');
+                            btn.addClass('is-success');
+                            appNotice.append('<div class="notification is-success">' + plugin + ' was added to the WordPress repository on <span class="tag is-warning">' + dateAdded + '</span> and the it\'s <span class="tag is-warning">' + age + '</span>  old.</div>');
+                            appNotice.append('<div class="notification is-warning">It has been downloaded <span class="tag is-success">' + downloads + '</span> times.</div>');
+                            appNotice.append('<a class="button is-success" href="' + data.download_link + '"> <span class="icon"><i class="fa fa-download"></i></span> <span>Download! — ' + plugin + ' </span> </a>');
+                        }
+                    },
+                    error: function(error) {
+                        console.log('ERROR: ', error.statusText);
+                        appNotice.empty();
+                        btn.removeClass('is-loading');
+                        inpt.addClass('is-danger');
+                        appNotice.append('<div class="notification is-danger">There was an error: <span class="tag is-danger is-large">' + error.statusText + '</span></div>');
+                    }
+                });
+
+                // Log.
+                function logResults(json) {
+                    console.log(json);
+                }
+            } else {
+                console.log('FAILED');
+                inpt.addClass('is-danger');
+                appNotice.append('<div class="notification is-danger">Kindly, enter a slug!</div>');
+            }
+        });
+    })(jQuery);
+    </script>
+</body>
+
+</html>
