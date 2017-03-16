@@ -69,7 +69,7 @@
                         appNotice.empty();
                         btn.removeClass( 'is-loading' );
                         inpt.addClass( 'is-danger' );
-                        appNotice.append( '<div class="notification is-danger">There was no plugin found agains the slug: <span class="tag is-warning">' + slug + '</span></div>' );
+                        appNotice.append( '<div class="notification is-danger">No plugin found against the slug: <span class="tag is-warning">' + slug + '</span></div>' );
 
                     } else {
                         // App Notice should be empty.
@@ -92,7 +92,7 @@
                         inpt.addClass( 'is-success' );
                         btn.removeClass( 'is-loading' );
                         btn.addClass( 'is-success' );
-                        appNotice.append( '<div class="notification is-success">' + plugin + ' was added to the WordPress repository on <span class="tag is-warning">' + dateAdded + '</span> and the it\'s <span class="tag is-warning">' + age + '</span>  old.</div>' );
+                        appNotice.append( '<div class="notification is-success">' + plugin + ' was added to the WordPress repository on <span class="tag is-warning">' + dateAdded + '</span> and it\'s <span class="tag is-warning">' + age + '</span>  old.</div>' );
                         appNotice.append( '<div class="notification is-warning">It has been downloaded <span class="tag is-success">' + downloads + '</span> times.</div>' );
                         appNotice.append( '<a class="button is-success" href="' + data.download_link + '"> <span class="icon"><i class="fa fa-download"></i></span> <span>Download! — ' + plugin + ' </span> </a>' );
                     }
