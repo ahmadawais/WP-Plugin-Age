@@ -6,8 +6,37 @@
  * @since then :)
  */
 
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* html element 62.5% font-size for REM use */
+
+html {
+    font-size: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: whitesmoke;
+}
+
+body {
+    color: #292929;
+    margin: 0;
+    background: whitesmoke;
+    height: 100%;
+    min-height: 100%;
+    word-break: break-word;
+    -webkit-word-break: break-word;
+}
+
 .content a {
-	color: #276cda !important;
+    color: #276cda !important;
 }
 
 .container,
@@ -16,10 +45,20 @@ button,
 input,
 .control,
 .notice {
-	text-align: center;
-	margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .notice {
-	max-width: 25rem;
+    max-width: 25rem;
+}
+
+.hero {
+    background: whitesmoke;
+}
+
+input,
+button {
+	width: 25rem !important;
+	min-height: 3rem;
 }
