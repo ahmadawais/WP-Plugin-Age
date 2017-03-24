@@ -1,0 +1,25 @@
+/**
+ * Style CSS.
+ *
+ * Coz, they say, the colors hurt their souls :P
+ *
+ * @since then :)
+ */
+
+.content a {
+	color: #276cda !important;
+}
+
+.container,
+p,
+button,
+input,
+.control,
+.notice {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.notice {
+	max-width: 25rem;
+}

@@ -1,7 +1,7 @@
 /**
  * Main Script.
  *
- * Version 1.0.0
+ * Version 1.1.0
  */
 ( function( $ ) {
     console.clear();
@@ -89,12 +89,13 @@
                         console.log( downloads );
 
                         // Success.
-                        inpt.addClass( 'is-success' );
+                        inpt.addClass( 'is-info' );
                         btn.removeClass( 'is-loading' );
-                        btn.addClass( 'is-success' );
-                        appNotice.append( '<div class="notification is-success">' + plugin + ' was added to the WordPress repository on <span class="tag is-warning">' + dateAdded + '</span> and it\'s <span class="tag is-warning">' + age + '</span>  old.</div>' );
-                        appNotice.append( '<div class="notification is-warning">It has been downloaded <span class="tag is-success">' + downloads + '</span> times.</div>' );
-                        appNotice.append( '<a class="button is-success" href="' + data.download_link + '"> <span class="icon"><i class="fa fa-download"></i></span> <span>Download! — ' + plugin + ' </span> </a>' );
+                        btn.addClass( 'is-info' );
+                        appNotice.append( '<div class="notification">' + plugin + ' was added to the WordPress repository on ' + dateAdded + '.</div>' );
+                        appNotice.append( '<div class="notification"><span class="tag is-warning">' + age + '</span>  old.</div>' );
+                        appNotice.append( '<div class="notification">It has been downloaded <span class="tag is-info">' + downloads + '</span> times.</div>' );
+                        appNotice.append( '<a class="button is-info" href="' + data.download_link + '"> <span class="icon"><i class="fa fa-download"></i></span> <span>Download! — ' + plugin + ' </span> </a>' );
                     }
                 },
                 error: function( error ) {

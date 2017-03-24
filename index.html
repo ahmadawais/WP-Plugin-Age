@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -17,29 +18,36 @@
 </head>
 
 <body>
-    <section class="hero">
+    <section class="hero is-half is-offset-one-quarter">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title"><img src="logo.png"></h1>
-                <h2 class="subtitle">Find the age of a WordPress Plugin at WordPress.org Repository!</h2>
+                <h2 class="subtitle">Age of a WordPress Plugin at WP.org!</h2>
             </div>
         </div>
     </section>
     <section class="hero">
         <div class="hero-body">
             <div class="container app">
-                <p class="control has-addons">
-                    <form action="#">
-                        <p class="control">
-                            <input class="input slug is-success column is-half" tabindex="1" type="text" placeholder="Enter plugin slug!">
+
+                <div class="columns is-mobile">
+                  <div class="column is-half is-offset-one-quarter">
+                        <p class="control has-addons">
+                            <form action="#">
+                                <p class="control">
+                                    <input class="input slug is-info column is-half" tabindex="1" type="text" placeholder="Enter plugin slug!">
+                                </p>
+                                <div class="control">
+                                    <p class="control">
+                                        <button class="button is-info" tabindex="2"><span class="icon"><i class="fa fa-search" aria-hidden="true"></i></span> <span>FIND</span></button>
+                                    </p>
+                                </div>
+                            </form>
                         </p>
-                        <div class="control">
-                            <p class="control">
-                                <button class="button is-success" tabindex="2"><span class="icon"><i class="fa fa-search" aria-hidden="true"></i></span> <span>FIND</span></button>
-                            </p>
-                        </div>
-                    </form>
-                </p>
+                  </div>
+                </div>
+
+
             </div>
         </div>
     </section>
@@ -56,8 +64,8 @@
         <div class="container">
             <div class="content has-text-centered">
                 <p>
-                    Built by <a href="https://AhmadAwais.com">Ahmad Awais</a> and <a href="https;MaedahBatool.com">Maedah Batool</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                    Built by <a href="https://AhmadAwais.com">Ahmad Awais</a> and <a href="https://MaedahBatool.com">Maedah Batool</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
                 </p>
             </div>
         </div>
