@@ -54,11 +54,11 @@
         // Age Calculator.
         function getAge( dateAdded ) {
             var
-                pluginAdded = new Date( dateAdded ),
-                today = new Date(),
-                ageInMilliseconds = new Date( today - pluginAdded ),
-                years = ageInMilliseconds / ( 24 * 60 * 60 * 1000 * 365.25 ),
-                months = 12 * ( years % 1 ),
+                pluginAdded = new Date( dateAdded );
+                today = new Date();
+                ageInMilliseconds = new Date( today - pluginAdded );
+                years = ageInMilliseconds / ( 24 * 60 * 60 * 1000 * 365.25 );
+                months = 12 * ( years % 1 );
                 days = Math.floor( 30 * ( months % 1 ) );
             return Math.floor( years ) + ' years ' + Math.floor( months ) + ' months ' + days + ' days';
         }
@@ -83,10 +83,10 @@
 
                 // Build a GET request.
                 $.ajax( {
-                    type: "POST",
-                    url: "https://api.wordpress.org/plugins/info/1.1/",
+                    type: "POST";
+                    url: "https://api.wordpress.org/plugins/info/1.1/";
                     data: {
-                        action: "plugin_information",
+                        action: "plugin_information";
                         request: {
                             slug: slug
                         }
