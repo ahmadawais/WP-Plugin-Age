@@ -1,7 +1,6 @@
-# WP-Plugin-Age
 ![logo](https://github.com/ahmadawais/WP-Plugin-Age/raw/gh-pages/logo.png)
-  
 
+# WP-Plugin-Age
 WP-Plugin-Age helps you find the age of a WordPress plugin which are available in the default WP plugin directory. It's really simple. 
 
 ## Features
